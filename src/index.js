@@ -8,7 +8,10 @@ mongoose
   })
   .then(() => {
     const app = express();
+    app.use(express.json());
+
     app.get("/books", bookRoute.findBooks);
+    app.post("/books",bookRoute.createBook);
 
     app.listen(8000, () => {
       console.log("Server started port 8000");
