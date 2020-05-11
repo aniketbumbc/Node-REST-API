@@ -10,3 +10,8 @@ exports.createBook = async (req, res) => {
   await book.save();
   res.send({ data: book });
 };
+
+exports.findSingleBook = async (req,res) =>{
+    const book = await Book.findById(req.params.id);
+    res.send({data:book});
+}
