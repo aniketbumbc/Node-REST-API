@@ -11,7 +11,11 @@ exports.createBook = async (req, res) => {
   res.send({ data: book });
 };
 
-exports.findSingleBook = async (req,res) =>{
+exports.findSingleBook = async (req, res) => {
+  try {
     const book = await Book.findById(req.params.id);
-    res.send({data:book});
-}
+    res.send({ data: book });
+  } catch {
+    res.status(404).send({ error: "Book is not found" });
+  }
+};
