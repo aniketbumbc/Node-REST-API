@@ -19,3 +19,15 @@ exports.findSingleBook = async (req, res) => {
     res.status(404).send({ error: "Book is not found" });
   }
 };
+
+exports.updateBook = async (req,res) => {
+    try {
+        const book = await Book.findById(req.params.id);
+        Object.assign(book,req.body);
+        book.save();
+        res.send({data:book});
+      } catch {
+        res.status(404).send({ error: "Book is not found" });
+      }
+
+}

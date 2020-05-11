@@ -13,6 +13,7 @@ mongoose
     app.get("/books", bookRoute.findBooks);
     app.post("/books",bookRoute.createBook);
     app.get("/books/:id",bookRoute.findSingleBook);
+    app.patch("/books/:id",bookRoute.updateBook);
 
     app.listen(8000, () => {
       console.log("Server started port 8000");
